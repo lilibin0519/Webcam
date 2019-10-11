@@ -1,0 +1,65 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:titleTextStyle">@style/titleStyle</item>-->
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowContentOverlay">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="titleBar" parent="@style/ThemeOverlay.AppCompat">
+        <item name="android:foregroundGravity">center_vertical</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:actionMenuTextColor">@android:color/black</item>
+    </style>
+
+    <style name="Transparent" parent="@style/Base.Theme.AppCompat">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Input dialog theme. -->
+    <style name="InputDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/c9</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="RtmpRoomDialogTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert"/>
+
+    <style name="BottomDialog" parent="@style/Base.V7.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+
+    <style name="BottomDialog.Animation" parent="Animation.AppCompat.Dialog">
+        <item name="android:windowEnterAnimation">@anim/translate_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/translate_dialog_out</item>
+    </style>
+    
+    <style name="TabLayoutTextStyle" >
+        <item name="android:textSize">@dimen/qb_px_34</item>
+    </style>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="qav_multi_video_friend_item_width">60dp</dimen>
+    <dimen name="qav_grid_view_item_width_audio">75dp</dimen>
+    <dimen name="h4">12sp</dimen>
+</resources>

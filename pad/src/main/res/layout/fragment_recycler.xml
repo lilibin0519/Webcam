@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_recycler_parent"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_recycler_title"
+        android:visibility="gone"
+        >
+        <View
+            android:id="@+id/temp_status"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            />
+        <include layout="@layout/title_bar" />
+    </LinearLayout>
+    <com.libin.mylibrary.widget.swiperecyclerview.SwipeRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_recycler_content"
+        android:layout_below="@id/fragment_recycler_title"
+        />
+</RelativeLayout>

@@ -1,0 +1,1 @@
+include ':app', ':allrecycleview', ':viewfractory', ':mylibrary', ':lib_tccommon', ':lib_tcsuperplayer'/*, ':lib_tcvideoediter', ':lib_tcvideojoiner', ':lib_tcvideorecord'*/, ':reward', ':pad'/*, ':giftlibrary'*/

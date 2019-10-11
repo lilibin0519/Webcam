@@ -1,0 +1,17 @@
+*.iml
+.gradle/
+.idea/
+build/
+local.properties
+allrecycleview/build/
+app/build/
+app/release/
+viewfractory/build/
+mylibrary/build/
+lib_tccommon/build/
+lib_tcsuperplayer/build/
+lib_tcvideoediter/build/
+lib_tcvideojoiner/build/
+lib_tcvideorecord/build/
+pad/build/
+reward/build/

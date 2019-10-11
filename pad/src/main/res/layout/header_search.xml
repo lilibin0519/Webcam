@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg_activity_default">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/qb_px_40"
+        android:paddingEnd="@dimen/qb_px_40"
+        android:paddingTop="@dimen/qb_px_30"
+        android:paddingBottom="@dimen/qb_px_30"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/qb_px_10"
+        android:layout_marginBottom="@dimen/qb_px_10"
+        android:background="@color/colorPrimary"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:textSize="@dimen/qb_px_40"
+            android:textColor="@color/titleText"
+            android:text="@string/label_search_hot"
+            />
+
+        <am.widget.wraplayout.WrapLayout
+            android:id="@+id/header_search_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qb_px_30"
+            app:wlyHorizontalSpacing="@dimen/qb_px_20"
+            app:wlyVerticalSpacing="@dimen/qb_px_20"
+            />
+    </LinearLayout>
+</RelativeLayout>

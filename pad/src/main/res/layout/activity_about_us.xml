@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:id="@+id/activity_about_us_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/qb_px_400"
+        android:gravity="center_vertical"
+        >
+        <ImageView
+            android:layout_width="@dimen/qb_px_200"
+            android:layout_height="@dimen/qb_px_200"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_about_us"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/qb_px_80"
+            android:textColor="@color/titleText"
+            android:text="@string/app_name"
+            android:layout_marginStart="@dimen/qb_px_60"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/activity_about_us_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/activity_about_us_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/qb_px_60"
+        android:textSize="@dimen/qb_px_40"
+        android:textColor="@color/titleText"
+        />
+
+    <TextView
+        android:id="@+id/activity_about_us_copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/qb_px_180"
+        android:layout_marginTop="@dimen/qb_px_60"
+        android:textSize="@dimen/qb_px_40"
+        android:textColor="@color/titleText"
+        android:text="Copyright© 2019万秀直播 版权所有"
+        />
+</android.support.constraint.ConstraintLayout>

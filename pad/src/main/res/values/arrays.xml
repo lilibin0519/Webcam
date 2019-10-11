@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="text_color_follow">
+        <item>@color/pink</item>
+        <item>@color/flesh_color</item>
+    </array>
+</resources>

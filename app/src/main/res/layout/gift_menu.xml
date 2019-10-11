@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/gift_menu_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/qb_px_20"
+            android:scrollbars="none"
+            android:background="@drawable/bg_gray_radius"
+            />
+        <!--<ImageView
+            android:id="@+id/gift_menu_arrow"
+            android:layout_width="@dimen/qb_px_64"
+            android:layout_height="@dimen/qb_px_30"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/icon_arrow_up_blue"
+            android:layout_below="@id/gift_menu_list"
+            android:background="@android:color/black"
+            />-->
+        <ImageView
+            android:id="@+id/gift_menu_arrow"
+            android:layout_width="@dimen/qb_px_64"
+            android:layout_height="@dimen/qb_px_30"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/icon_arrow_up_blue"
+            android:rotation="180"
+            android:layout_below="@id/gift_menu_list"
+            android:tint="@color/bg_activity_default"
+            />
+    </RelativeLayout>
+</LinearLayout>

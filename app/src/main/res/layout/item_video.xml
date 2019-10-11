@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/qb_px_20">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="@dimen/qb_px_310"
+        android:layout_height="@dimen/qb_px_310"
+        app:riv_corner_radius="@dimen/qb_px_20"
+        android:scaleType="centerCrop"
+        app:riv_border_width="@dimen/qb_px_3"
+        app:riv_border_color="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/item_video_image"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_chat_radius"
+        android:padding="@dimen/qb_px_10"
+        app:layout_constraintStart_toStartOf="@id/item_video_image"
+        app:layout_constraintBottom_toBottomOf="@id/item_video_image"
+        android:layout_margin="@dimen/qb_px_20"
+        >
+        <ImageView
+            android:layout_width="@dimen/qb_px_40"
+            android:layout_height="@dimen/qb_px_40"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_play"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/qb_px_40"
+            android:id="@+id/item_video_times"
+            android:layout_marginStart="@dimen/qb_px_10"
+            />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

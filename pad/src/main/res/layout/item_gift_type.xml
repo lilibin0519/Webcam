@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/item_gift_type_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/text_color_gift"
+        android:textSize="@dimen/qb_px_36"
+        android:background="@drawable/bg_gift_type"
+        android:paddingTop="@dimen/qb_px_20"
+        android:paddingBottom="@dimen/qb_px_20"
+        android:paddingStart="@dimen/qb_px_40"
+        android:paddingEnd="@dimen/qb_px_40"
+        />
+</LinearLayout>

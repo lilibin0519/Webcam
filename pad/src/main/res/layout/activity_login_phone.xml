@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    >
+
+    <!--<include layout="@layout/title_bar_transparent" />-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:gravity="center_vertical"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingStart="@dimen/qb_px_20"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_260"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_start_logo"
+                android:scaleType="fitCenter"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/qb_px_60"
+                android:textStyle="bold"
+                android:gravity="center_horizontal|bottom"
+                android:paddingTop="@dimen/qb_px_60"
+                android:text="@string/app_name"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/qb_px_5"
+            android:layout_height="@dimen/qb_px_500"
+            android:background="@android:color/white"
+            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/qb_px_120"
+                android:layout_marginStart="@dimen/qb_px_120"
+                android:text="@string/label_login_by_code"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/qb_px_60" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/qb_px_10"
+                android:background="@drawable/bg_edit_layout_login"
+                android:layout_marginEnd="@dimen/qb_px_120"
+                android:layout_marginStart="@dimen/qb_px_120"
+                android:layout_marginTop="@dimen/qb_px_20"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/qb_px_40"
+                    android:paddingEnd="@dimen/qb_px_40"
+                    android:paddingBottom="@dimen/qb_px_60"
+                    android:gravity="center"
+                    android:background="@drawable/bg_transparent_bolder_dark_radius"
+                    >
+                    <EditText
+                        android:id="@+id/activity_login_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="@dimen/qb_px_40"
+                        android:background="@null"
+                        android:textColorHint="@color/label_gray"
+                        android:textColor="@color/titleText"
+                        android:hint="请输入包房号"
+                        android:layout_marginTop="@dimen/qb_px_60"
+                        android:layout_marginBottom="@dimen/qb_px_10"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/qb_px_3"
+                        android:background="@color/label_gray"
+                        />
+
+                    <EditText
+                        android:id="@+id/activity_login_phone_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/qb_px_40"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:textColorHint="@color/label_gray"
+                        android:textColor="@color/titleText"
+                        android:hint="请输入密码"
+                        android:layout_marginTop="@dimen/qb_px_60"
+                        android:layout_marginBottom="@dimen/qb_px_10"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/qb_px_3"
+                        android:background="@color/label_gray"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/activity_login_phone_submit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_120"
+                android:layout_marginTop="@dimen/qb_px_40"
+                android:layout_marginStart="@dimen/qb_px_220"
+                android:layout_marginEnd="@dimen/qb_px_220"
+                android:layout_marginBottom="@dimen/qb_px_5"
+                android:background="@drawable/bg_btn_login"
+                android:textSize="@dimen/qb_px_50"
+                android:textColor="@android:color/white"
+                android:paddingStart="@dimen/qb_px_40"
+                android:paddingEnd="@dimen/qb_px_40"
+                android:text="@string/label_btn_login"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

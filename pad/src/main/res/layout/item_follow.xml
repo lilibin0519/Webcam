@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/qb_px_40"
+    android:background="@color/colorPrimary">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/item_follow_avatar"
+        android:layout_width="@dimen/qb_px_110"
+        android:layout_height="@dimen/qb_px_110"
+        android:src="@drawable/performer_avatar"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        app:civ_border_width="@dimen/qb_px_4"
+        app:civ_border_color="@color/pink"
+        />
+
+    <TextView
+        android:id="@+id/item_follow_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/label_gray"
+        android:textSize="@dimen/qb_px_30"
+        android:text="2小时前"
+        android:gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/item_follow_avatar"
+        android:layout_toStartOf="@id/item_follow_time"
+        android:layout_marginStart="@dimen/qb_px_30"
+        android:layout_marginEnd="@dimen/qb_px_30"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/item_follow_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/qb_px_44"
+            android:textColor="@color/titleText"
+            android:text="宇宙无敌小公举"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/qb_px_30"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/qb_px_34"
+                android:textColor="@color/label_tip"
+                android:text="@string/label_motto"
+                />
+            <TextView
+                android:id="@+id/item_follow_motto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/qb_px_34"
+                android:textColor="@color/label_tip"
+                android:text="随缘吃鸡"
+                android:lines="1"
+                android:ellipsize="end"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

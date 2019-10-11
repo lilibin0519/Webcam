@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">万秀直播</string>
+    <string name="please_wait">请稍后&#8230;</string>
+    <string name="label_login">手机登录</string>
+    <string name="label_login_w">微信登录</string>
+    <string name="label_login_by_code">验证码登录</string>
+    <string name="tip_login_phone">请输入手机号</string>
+    <string name="tip_login_code">请输入验证码</string>
+    <string name="label_get_code">发验证码</string>
+    <string name="label_btn_login">立即登录</string>
+    <string name="title_register">注册</string>
+    <string name="back_login"><![CDATA[< Back]]></string>
+    <string name="label_cancel">取消</string>
+    <string name="label_follow">关注</string>
+    <string name="label_follower">粉丝</string>
+    <string name="label_like">赞</string>
+    <string name="label_recommend_you">为你推荐</string>
+    <string name="label_motto">个性签名：</string>
+    <string name="label_search_hot">热门搜索</string>
+    <string name="label_btn_ranking_day">日榜</string>
+    <string name="label_btn_ranking_week">周榜</string>
+    <string name="label_btn_ranking_month">月榜</string>
+    <string name="label_btn_ranking_all">超级榜</string>
+    <string name="label_user_number">会员号：</string>
+    <string name="label_mine_message">我的消息</string>
+    <string name="label_mine_cash">账户余额</string>
+    <string name="label_mine_bind_w">绑定微信</string>
+    <string name="label_mine_bind_phone">绑定手机号</string>
+    <string name="label_logout">退出</string>
+    <string name="label_cam_interview">连麦</string>
+    <string name="tip_recharge">温馨提示：\n1.兑换关系：人民币1元=100秀币\n2.充值成功后，到账可能有一定延迟，请耐心等待。大额充值建议使用支付宝支付。</string>
+    <string name="label_watch_record">观看记录</string>
+    <string name="label_mine_info">基本信息</string>
+    <string name="label_user_info_nickname">昵称</string>
+    <string name="label_user_info_sign">个人简介</string>
+    <string name="label_user_info_birthday">生日</string>
+    <string name="label_user_info_gender">性别</string>
+    <string name="label_user_info_country">国家/地区</string>
+    <string name="label_user_info_phone">手机号</string>
+    <string name="label_mine_about_us">关于我们</string>
+    <string name="label_red_packet">发现一个大大的红包</string>
+</resources>

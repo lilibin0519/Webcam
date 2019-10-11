@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+    <include layout="@layout/item_action_top" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/qb_px_80">
+        <include layout="@layout/item_action_center" />
+    </LinearLayout>
+    <include layout="@layout/item_action_bottom" />
+</LinearLayout>

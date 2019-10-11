@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_white_radius"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="禁言1小时"
+            android:id="@+id/shut_up"
+            android:padding="@dimen/qb_px_20"
+            android:textColor="#2677F0"
+            android:textSize="@dimen/qb_px_40"
+            android:gravity="center"/>
+
+        <include layout="@layout/line_layout" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="拉黑"
+            android:id="@+id/black"
+            android:padding="@dimen/qb_px_20"
+            android:textColor="#2677F0"
+            android:textSize="@dimen/qb_px_40"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_white_radius"
+        android:layout_marginTop="@dimen/qb_px_30"
+        android:layout_height="wrap_content"
+        android:text="取消"
+        android:id="@+id/close"
+        android:padding="@dimen/qb_px_20"
+        android:textColor="#2677F0"
+        android:textSize="@dimen/qb_px_40"
+        android:gravity="center"/>
+</LinearLayout>

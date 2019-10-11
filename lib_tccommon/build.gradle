@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+//    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.android.support:appcompat-v7:26.1.0'
+    api 'com.android.support:recyclerview-v7:26.1.0'
+    api(name: 'LiteAVSDK_Smart_6.6.7551', ext: 'aar')
+//    api files('libs/glide-3.7.0.jar')
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+}

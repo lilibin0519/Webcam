@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tab_text_normal">#9c9c9c</color>
+    <color name="base_msg_color">#ff999999</color>
+    <color name="titleText">#090909</color>
+
+    <color name="colorPrimary">#D80204</color>
+    <color name="colorAccent">#ff0000</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorTitle">@android:color/white</color>
+
+    <color name="__picker_pager_bg">#CA000000</color>
+    <color name="__picker_selected_bg">#44000000</color>
+    <color name="__picker_black_40">#282828</color>
+    <color name="__picker_common_primary">#f3f3f3</color>
+
+    <color name="__picker_text_40">#282828</color>
+    <color name="__picker_text_80">#505050</color>
+    <color name="__picker_text_120">#787878</color>
+    <color name="__picker_item_photo_border_selected">#6EDCE5</color>
+    <color name="__picker_item_photo_border_n">#33ffffff</color>
+</resources>

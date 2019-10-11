@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="pink">#fb5d98</color>
+    <color name="red">#ff424c</color>
+    <color name="flesh_color">#fcc29d</color>
+    <color name="transparent">#00000000</color>
+    <color name="titleText">#090909</color>
+    <color name="grayText">@color/label_tip</color>
+    <color name="label_small_gray">#c4c4c4</color>
+    <color name="label_gray">#707070</color>
+    <color name="line_color">#d6d6d6</color>
+    <color name="label_tip">#AFAFAF</color>
+    <color name="label_dark">#3c3c3c</color>
+    <color name="bg_activity_default">#f3f3f3</color>
+    <color name="hint">#b9b9b9</color>
+    <color name="comui_tab_text_color">@color/titleText</color>
+
+    <color name="orange">#FF7800</color>
+    <color name="yellow">#FFE56E</color>
+</resources>

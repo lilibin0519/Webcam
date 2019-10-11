@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:gesture-image="http://schemas.polites.com/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <uk.co.senab.photoview.PhotoView
+        android:id="@+id/givLocalImage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+    
+</FrameLayout>

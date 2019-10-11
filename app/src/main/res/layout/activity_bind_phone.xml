@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    >
+
+    <include layout="@layout/title_bar_transparent" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/qb_px_80"
+        android:textSize="@dimen/qb_px_80"
+        android:layout_marginStart="@dimen/qb_px_70"
+        android:layout_marginEnd="@dimen/qb_px_70"
+        android:textColor="@color/titleText"
+        android:text="绑定手机号"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_140"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/qb_px_130"
+        android:layout_marginStart="@dimen/qb_px_70"
+        android:layout_marginEnd="@dimen/qb_px_70"
+        android:gravity="center_vertical"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/titleText"
+                android:textSize="@dimen/qb_px_50"
+                android:text="+86"
+                />
+            <ImageView
+                android:layout_width="@dimen/qb_px_32"
+                android:layout_height="@dimen/qb_px_32"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_arrow_down"
+                android:scaleType="fitCenter"
+                android:layout_marginStart="@dimen/qb_px_20"
+                android:layout_marginEnd="@dimen/qb_px_20"
+                android:tint="@color/titleText"
+                />
+            <View android:layout_width="@dimen/qb_px_1"
+                android:layout_height="match_parent"
+                android:background="@color/titleText"
+                />
+        </LinearLayout>
+        <EditText
+            android:id="@+id/activity_bind_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textSize="@dimen/qb_px_50"
+            android:background="@null"
+            android:textColorHint="@color/label_tip"
+            android:textColor="@color/titleText"
+            android:hint="@string/tip_login_phone"
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:layout_marginEnd="@dimen/qb_px_20"
+            />
+    </LinearLayout>
+    <include layout="@layout/line_layout_3" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_140"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/qb_px_60"
+        android:layout_marginStart="@dimen/qb_px_70"
+        android:layout_marginEnd="@dimen/qb_px_70"
+        android:gravity="center_vertical"
+        >
+        <EditText
+            android:id="@+id/activity_bind_phone_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/qb_px_50"
+            android:background="@null"
+            android:inputType="number"
+            android:textColorHint="@color/label_tip"
+            android:textColor="@color/titleText"
+            android:hint="@string/tip_login_code"
+            android:layout_marginStart="@dimen/qb_px_20"
+            android:layout_marginEnd="@dimen/qb_px_20"
+            />
+
+        <Button
+            android:id="@+id/activity_bind_phone_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/qb_px_0"
+            android:background="@drawable/bg_btn_login"
+            android:textSize="@dimen/qb_px_35"
+            android:textColor="@android:color/white"
+            android:paddingTop="@dimen/qb_px_30"
+            android:paddingBottom="@dimen/qb_px_30"
+            android:paddingStart="@dimen/qb_px_40"
+            android:paddingEnd="@dimen/qb_px_40"
+            android:text="@string/label_get_code"
+            />
+    </LinearLayout>
+    <include layout="@layout/line_layout_3" />
+
+    <Button
+        android:id="@+id/activity_bind_phone_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_140"
+        android:layout_marginTop="@dimen/qb_px_250"
+        android:layout_marginStart="@dimen/qb_px_170"
+        android:layout_marginEnd="@dimen/qb_px_170"
+        android:background="@drawable/bg_btn_login"
+        android:textSize="@dimen/qb_px_50"
+        android:textColor="@android:color/white"
+        android:paddingTop="@dimen/qb_px_30"
+        android:paddingBottom="@dimen/qb_px_30"
+        android:paddingStart="@dimen/qb_px_40"
+        android:paddingEnd="@dimen/qb_px_40"
+        android:text="绑定"
+        />
+</LinearLayout>

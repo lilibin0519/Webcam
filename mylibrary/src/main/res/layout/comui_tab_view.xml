@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="@dimen/qb_px_90"
+        android:scaleType="centerInside"
+        android:layout_marginTop="@dimen/qb_px_10"
+        android:layout_height="@dimen/qb_px_90">
+        <ImageView
+            android:id="@+id/tab_icon"
+            android:layout_width="@dimen/qb_px_90"
+            android:layout_height="@dimen/qb_px_90"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitCenter"
+            />
+        <ImageView
+            android:id="@+id/tab_red_point"
+            android:layout_width="@dimen/qb_px_15"
+            android:layout_height="@dimen/qb_px_15"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/bg_red_point"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tab_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="@dimen/qb_px_10"
+        android:textSize="@dimen/qb_px_32"
+        android:text="123"/>
+
+
+
+</LinearLayout>

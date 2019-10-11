@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/item_gift_menu_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/qb_px_40"
+        android:background="@drawable/bg_red_circle"
+        tools:text="x99"
+        android:paddingStart="@dimen/qb_px_20"
+        android:paddingEnd="@dimen/qb_px_20"
+        android:paddingTop="@dimen/qb_px_5"
+        android:paddingBottom="@dimen/qb_px_5"
+        android:layout_marginStart="@dimen/qb_px_10"
+        android:layout_marginEnd="@dimen/qb_px_10"
+        android:layout_centerVertical="true"
+        />
+</RelativeLayout>

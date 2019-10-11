@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_radius"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/dialog_guard_buy_title"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/qb_px_54"
+            android:textStyle="bold"
+            android:textColor="@color/titleText"
+            android:text="守护开通"
+            android:paddingStart="@dimen/qb_px_40"
+            android:paddingEnd="@dimen/qb_px_40"
+            android:paddingTop="@dimen/qb_px_20"
+            android:paddingBottom="@dimen/qb_px_20"
+            />
+        <include layout="@layout/line_layout" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dialog_guard_buy_list"
+        android:layout_below="@id/dialog_guard_buy_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_600"
+        android:paddingStart="@dimen/qb_px_60"
+        android:paddingEnd="@dimen/qb_px_60"
+        />
+    <LinearLayout
+        android:layout_below="@id/dialog_guard_buy_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+        <TextView
+            android:id="@+id/dialog_guard_buy_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="@dimen/qb_px_40"
+            android:paddingBottom="@dimen/qb_px_40"
+            android:textColor="@color/titleText"
+            android:textSize="@dimen/qb_px_44"
+            android:text="取消"
+            />
+        <include layout="@layout/line_layout_2"/>
+        <TextView
+            android:id="@+id/dialog_guard_buy_confirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="@dimen/qb_px_40"
+            android:paddingBottom="@dimen/qb_px_40"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/qb_px_44"
+            android:text="购买"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/dialog_guard_buy_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        >
+        <include layout="@layout/line_layout" />
+    </LinearLayout>
+</RelativeLayout>

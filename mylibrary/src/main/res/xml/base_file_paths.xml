@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <!--<external-path path="everyEnjoyT/library/" name="my_photo"/>-->
+        <root-path path="" name="my_photo"/>
+    </paths>
+</resources>

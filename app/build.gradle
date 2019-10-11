@@ -1,0 +1,111 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+realm {
+    syncEnabled = true
+}
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.wstv.webcam"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 4
+        versionName "1.3"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+            // 如果您使用的是商业版，只能使用 armeabi 架构，即：
+            // abiFilters "armeabi",
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    signingConfigs {
+        debug {
+        }
+        release {// 自己的签名文件
+            storeFile file('key/stream.jks')
+            storePassword "WanXiu_0124"
+            keyAlias "wanxiu"
+            keyPassword "WanXiu_0124"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    /*configurations{
+        all*.exclude module: 'okhttp'
+        all*.exclude module: 'okio'
+    }*/
+}
+
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-annotations:27.1.1'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta09'
+
+    implementation project(':mylibrary')
+    implementation 'de.hdodenhof:circleimageview:2.0.0'
+    implementation 'com.youth.banner:banner:1.4.10'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'am.widget:wraplayout:1.2.1'
+
+    // 导入腾讯云直播 SDK aar
+    compile(name: 'LiteAVSDK_Smart_6.6.7551', ext: 'aar')
+//    compile('libs/LiteAVSDK_Professional_5.4.6097.aar')
+    // 导入腾讯云直播 SDK jar
+//    compile fileTree(dir: 'src/main/jniLibs', includes: ['*.jar'])
+    // 导入腾讯云直播 IM SDK aar
+    implementation 'com.tencent.imsdk:imsdk:4.4.900'
+
+//    compile project(':lib_tccommon')
+//    compile project(':lib_tcvideoediter')
+//    compile project(':lib_tcvideojoiner')
+//    compile project(':lib_tcvideorecord')
+//    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+
+    compile 'com.github.yyued:SVGAPlayer-Android:2.4.2'
+//    implementation 'com.github.Yuphee:RewardLayout:1.0.5.8'
+    implementation project(':reward')
+
+    // 微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    // bugly
+    compile 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+
+    // 腾讯云 对象存储 cos
+    compile ('com.tencent.qcloud:cosxml:5.4.25'){
+        exclude group:'com.tencent.qcloud', module: 'mtaUtils' //关闭 mta上报功能
+    }
+}

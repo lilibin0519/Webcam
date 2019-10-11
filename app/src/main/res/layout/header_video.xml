@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/header_video_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/qb_px_20"
+        android:paddingTop="@dimen/qb_px_20"
+        android:paddingStart="@dimen/qb_px_40"
+        android:paddingEnd="@dimen/qb_px_40"
+        android:textColor="@color/label_gray"
+        android:textSize="@dimen/qb_px_40"
+        />
+</android.support.constraint.ConstraintLayout>

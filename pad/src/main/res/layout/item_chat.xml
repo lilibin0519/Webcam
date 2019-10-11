@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/qb_px_10"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/qb_px_10"
+        android:paddingBottom="@dimen/qb_px_10"
+        android:paddingStart="@dimen/qb_px_20"
+        android:paddingEnd="@dimen/qb_px_20"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_chat_radius">
+        <ImageView
+            android:layout_width="@dimen/qb_px_46"
+            android:layout_height="@dimen/qb_px_50"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/app_name"
+            android:id="@+id/item_chat_guard"
+            android:src="@drawable/icon_user_guard_year"
+            android:layout_marginEnd="@dimen/qb_px_20"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:layout_width="@dimen/qb_px_100"
+            android:layout_height="@dimen/qb_px_38"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/app_name"
+            android:id="@+id/item_chat_level"
+            android:src="@drawable/level1"
+            android:layout_marginEnd="@dimen/qb_px_20"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#99abff"
+            android:textSize="@dimen/qb_px_26"
+            android:id="@+id/item_chat_nickname"
+            android:layout_marginEnd="@dimen/qb_px_10"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/qb_px_26"
+            android:id="@+id/item_chat_message"
+            android:gravity="center_vertical"
+            />
+    </LinearLayout>
+</LinearLayout>

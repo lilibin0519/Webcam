@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/dialog_chat_temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        >
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_800" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_400" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@id/dialog_chat_temp"
+        >
+        <include layout="@layout/activity_chat_room" />
+    </RelativeLayout>
+</RelativeLayout>
