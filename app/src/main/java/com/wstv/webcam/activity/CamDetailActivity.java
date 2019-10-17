@@ -72,6 +72,7 @@ import com.wstv.webcam.http.model.guard.GuardGood;
 import com.wstv.webcam.http.model.guard.GuardResult;
 import com.wstv.webcam.http.model.ranking.RankingResult;
 import com.wstv.webcam.tencent.liveroom.IMLVBLiveRoomListener;
+import com.wstv.webcam.tencent.liveroom.MLVBLiveRoom;
 import com.wstv.webcam.tencent.liveroom.MLVBLiveRoomImpl;
 import com.wstv.webcam.tencent.roomutil.commondef.AnchorInfo;
 import com.wstv.webcam.tencent.roomutil.commondef.AudienceInfo;
@@ -237,7 +238,7 @@ public class CamDetailActivity extends BaseActivity {
     @Bind(R.id.activity_cam_detail_barrage)
     BarrageView barrageView;
 
-    private Pusher pusher;
+    private AnchorInfo pusher;
 
     private RedPacketDialog redPacketDialog;
 
@@ -302,7 +303,7 @@ public class CamDetailActivity extends BaseActivity {
 //            }
 //        });
 //        initPlayer();
-        liveRoom = LiveRoomUtil.getInstance(this).getLiveRoom();
+        liveRoom = MLVBLiveRoom.sharedInstance(this);
         liveRoom.setListener(createRoomListener());
 
         msg = new CustomMsg();
@@ -1196,7 +1197,8 @@ public class CamDetailActivity extends BaseActivity {
 //                animView.startAnimation();
 //            }
 //        });
-        try {
+        // start by easy
+        /*try {
             parser.decodeFromURL(new URL(giftUrl), new SVGAParser.ParseCompletion() {
                 @Override
                 public void onComplete(SVGAVideoEntity svgaVideoEntity) {
@@ -1214,7 +1216,8 @@ public class CamDetailActivity extends BaseActivity {
             });
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        }
+        }*/
+        // end by easy
     }
 
     /**
@@ -1348,7 +1351,7 @@ public class CamDetailActivity extends BaseActivity {
         flvUrl = extras.getString(BUNDLE_KEY_FLV_URL);
         roomId = extras.getString(BUNDLE_KEY_ROOM_ID);
         linkPlayUrl = extras.getString(BUNDLE_KEY_LINK_URL);
-        pusher = (Pusher) extras.getSerializable(BUNDLE_KEY_PERFORMER);
+        pusher = (AnchorInfo) ((ArrayList) extras.getSerializable(BUNDLE_KEY_PERFORMER)).get(0);
 //        audiences = (ArrayList<Audience>) extras.getSerializable(BUNDLE_KEY_AUDIENCE);
         if (null == audiences) {
             audiences = new ArrayList<>();
@@ -1813,7 +1816,8 @@ public class CamDetailActivity extends BaseActivity {
     private void sendCustomMsg(String cmd, CustomMsg msg, IMLVBLiveRoomListener.SendRoomCustomMsgCallback callback){
         if (loading.getVisibility() == View.VISIBLE) {
             showToastCenter("暂未直播，功能不可用");
-            return;
+            //del by easy
+//            return;
         }
         liveRoom.sendRoomCustomMsg(cmd, GsonUtils.gsonString(msg), callback);
     }

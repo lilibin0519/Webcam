@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.wstv.webcam.fragment.HallFragment;
 import com.wstv.webcam.http.model.room.Room;
+import com.wstv.webcam.tencent.roomutil.commondef.RoomInfo;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ import em.sang.com.allrecycleview.inter.DefaultAdapterViewListener;
  * @createDate 2019/3/12 17:04
  */
 
-public class HallViewListener extends DefaultAdapterViewListener<Room> {
+public class HallViewListener extends DefaultAdapterViewListener<RoomInfo> {
 
     private HallFragment hallFragment;
 
@@ -27,7 +28,7 @@ public class HallViewListener extends DefaultAdapterViewListener<Room> {
     }
 
     @Override
-    public CustomHolder getBodyHolder(Context context, List<Room> lists, int itemID) {
+    public CustomHolder getBodyHolder(Context context, List<RoomInfo> lists, int itemID) {
         return new HallHolder(context, lists, itemID, hallFragment);
     }
 }

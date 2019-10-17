@@ -2,9 +2,11 @@ package com.wstv.webcam.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.libin.mylibrary.base.eventbus.EventCenter;
 import com.libin.mylibrary.widget.swiperecyclerview.SwipeRecyclerView;
 import com.wstv.webcam.AppConstant;
@@ -18,6 +20,9 @@ import com.wstv.webcam.http.model.BannerBean;
 import com.wstv.webcam.http.model.BannerResult;
 import com.wstv.webcam.http.model.room.Room;
 import com.wstv.webcam.http.model.room.RoomListResult;
+import com.wstv.webcam.tencent.liveroom.IMLVBLiveRoomListener;
+import com.wstv.webcam.tencent.liveroom.MLVBLiveRoom;
+import com.wstv.webcam.tencent.roomutil.commondef.RoomInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +45,9 @@ public class HallFragment extends BaseFragment implements SwipeRecyclerView.OnLo
     @Bind(R.id.fragment_hall_content)
     SwipeRecyclerView content;
 
-    DefaultAdapter<Room> adapter;
+    DefaultAdapter<RoomInfo> adapter;
 
-    List<Room> data;
+    List<RoomInfo> data;
 
     HallHeaderHolder header;
 
@@ -51,6 +56,9 @@ public class HallFragment extends BaseFragment implements SwipeRecyclerView.OnLo
     private List<BannerBean> bannerList;
 
     private String type;
+
+    // add by easy
+    private MLVBLiveRoom liveRoom;
 
     public static HallFragment newInstance(int position, String type) {
         HallFragment fragment = new HallFragment();
@@ -64,8 +72,12 @@ public class HallFragment extends BaseFragment implements SwipeRecyclerView.OnLo
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         index = getArguments().getInt(KEY_BUNDLE_INDEX);
         type = getArguments().getString(KEY_BUNDLE_TYPE);
+
+        // add  by easy
+        liveRoom = MLVBLiveRoom.sharedInstance(getActivity());
     }
 
     private void initList(){
@@ -114,6 +126,30 @@ public class HallFragment extends BaseFragment implements SwipeRecyclerView.OnLo
     }
 
     private void requestData() {
+        liveRoom.getRoomList(currentPage, AppConstant.DEFAULT_PAGE_SIZE, new IMLVBLiveRoomListener.GetRoomListCallback() {
+            @Override
+            public void onError(int errCode, String errInfo) {
+
+            }
+
+            @Override
+            public void onSuccess(ArrayList<RoomInfo> roomInfoList) {
+                if (currentPage == 0) {
+                    data.clear();
+                } else if (null == roomInfoList || roomInfoList.size() == 0) {
+                    currentPage--;
+                }
+                if (null == content) {
+                    return;
+                }
+                content.setHasBottom(null != roomInfoList && roomInfoList.size() == AppConstant.DEFAULT_PAGE_SIZE);
+                content.setLoadMoreEnable(null != roomInfoList && roomInfoList.size() == AppConstant.DEFAULT_PAGE_SIZE);
+                content.complete();
+                data.addAll(roomInfoList);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        /* del by easy
         HttpService.getRoomsBy(this, currentPage, AppConstant.DEFAULT_PAGE_SIZE, type, new BaseCamCallback<RoomListResult>(getContext(), this) {
             @Override
             public void onSuccess(RoomListResult roomListResult, int id) {
@@ -132,6 +168,7 @@ public class HallFragment extends BaseFragment implements SwipeRecyclerView.OnLo
                 adapter.notifyDataSetChanged();
             }
         });
+        */
     }
 
     @Override

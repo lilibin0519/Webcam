@@ -724,7 +724,8 @@ public class IMMessageMgr implements TIMMessageListener {
                                         }
                                     }
                                 }
-                                else if (commonJson.cmd.equalsIgnoreCase("linkmic") || commonJson.cmd.equalsIgnoreCase("pk")) {
+                                else if (commonJson.cmd.equalsIgnoreCase("linkmic") || commonJson.cmd.equalsIgnoreCase("pk")
+                                        || commonJson.cmd.equalsIgnoreCase("privateMessage")) {
                                     mMessageListener.onC2CCustomMessage(message.getSender(), commonJson.cmd, new Gson().toJson(commonJson.data));
                                 }
                                 else if (commonJson.cmd.equalsIgnoreCase("CustomCmdMsg")) {

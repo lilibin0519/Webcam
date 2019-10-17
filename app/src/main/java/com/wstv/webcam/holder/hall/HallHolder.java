@@ -17,7 +17,9 @@ import com.wstv.webcam.http.HttpService;
 import com.wstv.webcam.http.callback.BaseCallback;
 import com.wstv.webcam.http.model.audience.AudienceStateResult;
 import com.wstv.webcam.http.model.room.Room;
+import com.wstv.webcam.tencent.roomutil.commondef.RoomInfo;
 
+import java.io.Serializable;
 import java.util.List;
 
 import em.sang.com.allrecycleview.holder.CustomHolder;
@@ -30,7 +32,7 @@ import em.sang.com.allrecycleview.holder.CustomHolder;
  * @createDate 2019/3/12 16:39
  */
 
-public class HallHolder extends CustomHolder<Room> {
+public class HallHolder extends CustomHolder<RoomInfo> {
 
     private HallFragment hallFragment;
 
@@ -40,14 +42,14 @@ public class HallHolder extends CustomHolder<Room> {
             "http://img0.imgtn.bdimg.com/it/u=3306322383,1145858665&fm=26&gp=0.jpg",
             "http://img0.imgtn.bdimg.com/it/u=1393771583,1541386921&fm=26&gp=0.jpg"};
 
-    public HallHolder(Context context, List<Room> lists, int itemID, HallFragment hallFragment) {
+    public HallHolder(Context context, List<RoomInfo> lists, int itemID, HallFragment hallFragment) {
         super(context, lists, itemID);
         this.hallFragment = hallFragment;
     }
 
     @Override
-    public void initView(final int position, final List<Room> datas, final Context context) {
-        final Room room = datas.get(position);
+    public void initView(final int position, final List<RoomInfo> datas, final Context context) {
+        final RoomInfo room = datas.get(position);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,27 +63,27 @@ public class HallHolder extends CustomHolder<Room> {
         if (null != room) {
 //            holderHelper.setText(R.id.item_hall_name, datas.get(position).pushersMap.get(datas.get(position).roomCreator).userName);
             holderHelper.setText(R.id.item_hall_name, datas.get(position).roomInfo);
-            holderHelper.setText(R.id.item_hall_views, String.valueOf(datas.get(position).audiencesCnt));
+            holderHelper.setText(R.id.item_hall_views, String.valueOf(datas.get(position).audienceCount));
 
-            String avatarUrl = datas.get(position).pushersMap.get(datas.get(position).roomCreator).userAvatar;
+            String avatarUrl = datas.get(position).pushers.get(0).userAvatar;
             Glide.with(context).load(!TextUtils.isEmpty(avatarUrl) ? avatarUrl : testImage[position % testImage.length]).into((ImageView) holderHelper.getView(R.id.item_hall_image));
         }
         int padding = context.getResources().getDimensionPixelSize(R.dimen.qb_px_15);
         itemView.setPadding(padding * (position % 2 == 0 ? 3 : 1), 0, padding * (position % 2 == 1 ? 3 : 1), padding * 2);
     }
 
-    private void enterRoom(final Room room) {
+    private void enterRoom(final RoomInfo room) {
         HttpService.audienceState(hallFragment, room.roomID, PreferenceUtil.readString(AppConstant.KEY_PARAM_USER_ID), new BaseCallback<AudienceStateResult>(context, hallFragment) {
             @Override
             public void onSuccess(AudienceStateResult audienceStateResult, int id) {
                 if (audienceStateResult.detail.state != 0) {
                     Bundle bundle = new Bundle();
                     bundle.putString(CamDetailActivity.BUNDLE_KEY_FLV_URL, room.mixedPlayURL);
-                    bundle.putString(CamDetailActivity.BUNDLE_KEY_LINK_URL, room.pushersMap.get(room.roomCreator).accelerateURL);
+//                    bundle.putString(CamDetailActivity.BUNDLE_KEY_LINK_URL, room.pushers.get(room.roomCreator).accelerateURL);
                     bundle.putString(CamDetailActivity.BUNDLE_KEY_ROOM_ID, room.roomID);
                     bundle.putString(CamDetailActivity.BUNDLE_KEY_PERFORMER_ID, room.roomCreator);
-                    bundle.putSerializable(CamDetailActivity.BUNDLE_KEY_PERFORMER, room.pushersMap.get(room.roomCreator));
-                    bundle.putSerializable(CamDetailActivity.BUNDLE_KEY_AUDIENCE, room.audiences);
+                    bundle.putSerializable(CamDetailActivity.BUNDLE_KEY_PERFORMER, (Serializable) room.pushers);
+                    bundle.putSerializable(CamDetailActivity.BUNDLE_KEY_AUDIENCE, (Serializable) room.audiences);
                     bundle.putInt(CamDetailActivity.BUNDLE_KEY_MANAGE, audienceStateResult.detail.manager);
                     bundle.putLong(CamDetailActivity.BUNDLE_KEY_SHUT_UP, audienceStateResult.detail.endTime);
                     bundle.putLong(CamDetailActivity.BUNDLE_KEY_SHUT_UP, audienceStateResult.detail.endTime);
