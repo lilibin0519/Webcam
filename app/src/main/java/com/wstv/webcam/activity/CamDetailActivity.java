@@ -1198,7 +1198,7 @@ public class CamDetailActivity extends BaseActivity {
 //            }
 //        });
         // start by easy
-        /*try {
+        try {
             parser.decodeFromURL(new URL(giftUrl), new SVGAParser.ParseCompletion() {
                 @Override
                 public void onComplete(SVGAVideoEntity svgaVideoEntity) {
@@ -1216,7 +1216,7 @@ public class CamDetailActivity extends BaseActivity {
             });
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        }*/
+        }
         // end by easy
     }
 

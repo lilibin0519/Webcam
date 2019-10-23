@@ -86,7 +86,7 @@
     </LinearLayout>
 
     <include layout="@layout/line_layout" />
-    <com.wstv.pad.widget.NoScrollViewPager
+    <com.wstv.webcam.widget.NoScrollViewPager
         android:id="@+id/fragment_main_pager"
         android:background="@drawable/bg_rooms"
         android:layout_width="match_parent"

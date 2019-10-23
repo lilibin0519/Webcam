@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wstv.pad">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wstv.webcam">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -21,7 +22,7 @@
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
     <application
-        android:name=".WsApp"
+        android:name="com.wstv.webcam.WsApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -47,7 +48,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>-->
-        <activity android:name=".activity.LoginPhoneActivity"
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            tools:replace="android:authorities"
+            android:grantUriPermissions="true">
+            <meta-data
+                tools:replace="android:resource"
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity android:name="com.wstv.webcam.activity.LoginPhoneActivity"
             android:exported="true"
             android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="stateHidden"
@@ -58,56 +74,56 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SearchActivity"
+        <activity android:name="com.wstv.webcam.activity.SearchActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustPan"
             />
-        <activity android:name=".activity.MainActivity"
+        <activity android:name="com.wstv.webcam.activity.MainActivity"
             android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name=".activity.FollowListActivity"
+        <activity android:name="com.wstv.webcam.activity.FollowListActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name=".activity.RecordActivity"
+        <activity android:name="com.wstv.webcam.activity.RecordActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name=".activity.GiftRankingActivity"
+        <activity android:name="com.wstv.webcam.activity.GiftRankingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name=".activity.WithRankingActivity"
+        <activity android:name="com.wstv.webcam.activity.WithRankingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name=".activity.MessageListActivity"
+        <activity android:name="com.wstv.webcam.activity.MessageListActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name=".activity.CashActivity"
+        <activity android:name="com.wstv.webcam.activity.CashActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name=".activity.CamDetailActivity"
+        <activity android:name="com.wstv.webcam.activity.CamDetailActivity"
             android:exported="true"
             android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name=".activity.PerformerActivity"
+        <activity android:name="com.wstv.webcam.activity.PerformerActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name=".activity.TestActivity"
+        <activity android:name="com.wstv.webcam.activity.TestActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".activity.RechargeActivity"
+        <activity android:name="com.wstv.webcam.activity.RechargeActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"
@@ -117,35 +133,35 @@
 
         <!-- 微信支付、登录回调Activity -->
         <activity
-            android:name=".wxapi.WXPayEntryActivity"
+            android:name="com.wstv.webcam.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"/>
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.wstv.webcam.wxapi.WXEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"/>
-        <activity android:name=".activity.UserInfoActivity"
+        <activity android:name="com.wstv.webcam.activity.UserInfoActivity"
             android:exported="true"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.AboutUsActivity"
+        <activity android:name="com.wstv.webcam.activity.AboutUsActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
-        <activity android:name=".activity.LocalImagePagerActivity"
+        <activity android:name="com.wstv.webcam.activity.LocalImagePagerActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.VideoActivity"
+        <activity android:name="com.wstv.webcam.activity.VideoActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
-        <activity android:name=".activity.BindPhoneActivity"
+        <activity android:name="com.wstv.webcam.activity.BindPhoneActivity"
             android:windowSoftInputMode="stateVisible"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.ActionDetailActivity"
+        <activity android:name="com.wstv.webcam.activity.ActionDetailActivity"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.VideoCommentsActivity"
+        <activity android:name="com.wstv.webcam.activity.VideoCommentsActivity"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.LivePageActivity"
+        <activity android:name="com.wstv.webcam.activity.LivePageActivity"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="sensorLandscape" />
     </application>

@@ -140,7 +140,7 @@
                 android:text="正在直播"
                 />
         </LinearLayout>
-        <com.wstv.pad.widget.NoScrollViewPager
+        <com.wstv.webcam.widget.NoScrollViewPager
             android:id="@+id/activity_live_page_pager"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

@@ -389,7 +389,7 @@
             app:gift_item_layout="@layout/gift_anim_item"
             android:layout_above="@id/activity_cam_detail_chat_list"
             android:orientation="vertical" />
-        <com.wstv.pad.widget.BarrageView
+        <com.wstv.webcam.widget.BarrageView
             android:id="@+id/activity_cam_detail_barrage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
