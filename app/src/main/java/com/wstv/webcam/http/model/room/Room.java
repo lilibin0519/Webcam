@@ -19,7 +19,7 @@ public class Room extends EmptyCamResult {
     public boolean actived;
     @SerializedName("audiences")
     public ArrayList<Audience> audiences;
-    @SerializedName("audiencesCnt")
+    @SerializedName("audienceCount")
     public int audiencesCnt;
     @SerializedName("customInfo")
     public String customInfo;

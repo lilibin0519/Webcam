@@ -16,7 +16,6 @@ import com.wstv.webcam.fragment.HallFragment;
 import com.wstv.webcam.http.HttpService;
 import com.wstv.webcam.http.callback.BaseCallback;
 import com.wstv.webcam.http.model.audience.AudienceStateResult;
-import com.wstv.webcam.http.model.room.Room;
 import com.wstv.webcam.tencent.roomutil.commondef.RoomInfo;
 
 import java.io.Serializable;

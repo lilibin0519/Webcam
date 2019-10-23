@@ -41,6 +41,7 @@ import com.opensource.svgaplayer.SVGADrawable;
 import com.opensource.svgaplayer.SVGAImageView;
 import com.opensource.svgaplayer.SVGAParser;
 import com.opensource.svgaplayer.SVGAVideoEntity;
+import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.wstv.webcam.AppConstant;
@@ -61,7 +62,6 @@ import com.wstv.webcam.http.model.EmptyResult;
 import com.wstv.webcam.http.model.IsFollowResult;
 import com.wstv.webcam.http.model.PerformerCard;
 import com.wstv.webcam.http.model.PerformerCardResult;
-import com.wstv.webcam.http.model.Pusher;
 import com.wstv.webcam.http.model.account.AccountResult;
 import com.wstv.webcam.http.model.audience.Audience;
 import com.wstv.webcam.http.model.gift.GiftAnim;
@@ -79,7 +79,6 @@ import com.wstv.webcam.tencent.roomutil.commondef.AudienceInfo;
 import com.wstv.webcam.tencent.roomutil.commondef.PusherInfo;
 import com.wstv.webcam.tencent.roomutil.misc.TextChatMsg;
 import com.wstv.webcam.tencent.roomutil.misc.TextMsgInputDialog;
-import com.wstv.webcam.util.LiveRoomUtil;
 import com.wstv.webcam.util.NumberUtil;
 import com.wstv.webcam.util.click.ClickProxy;
 import com.wstv.webcam.widget.BarrageView;
@@ -91,6 +90,7 @@ import com.zhangyf.gift.RewardLayout;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -322,8 +322,8 @@ public class CamDetailActivity extends BaseActivity {
 
             @Override
             public void onSuccess() {
-                sendUserAdd();
                 loading.setVisibility(View.GONE);
+                sendUserAdd();
                 getAud();
             }
         }, getApp().getUserBean().sex, getApp().getUserBean().level);
@@ -676,22 +676,42 @@ public class CamDetailActivity extends BaseActivity {
         return new IMLVBLiveRoomListener() {
             @Override
             public void onError(int errCode, String errMsg, Bundle extraInfo) {
-
+                Trace.e("CamDetail", "errCode : " + errCode);
+                if (errCode == TXLiveConstants.PLAY_ERR_NET_DISCONNECT || errCode == TXLiveConstants.PLAY_EVT_PLAY_END) {
+                    // 网络断连，且经多次重连亦不能恢复，更多重试请自行重启播放 || 直播正常结束
+//                    roomListenerCallback.onDebugLog("[AnswerRoom] 拉流失败：网络断开");
+//                    roomListenerCallback.onError(-1, "网络断开，拉流失败");
+                    loading.setText("主播已下播");
+                    loading.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onWarning(int warningCode, String warningMsg, Bundle extraInfo) {
-
+                Trace.e("CamDetail", "warningCode : " + warningCode);if (warningCode == TXLiveConstants.PLAY_EVT_GET_MESSAGE) {
+                    // 自定义消息
+                    String msg = null;
+                    try {
+                        msg = new String(extraInfo.getByteArray(TXLiveConstants.EVT_GET_MSG), "UTF-8");
+//                        roomListenerCallback.onRecvAnswerMsg(msg);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                } else if (warningCode == TXLiveConstants.PLAY_EVT_PLAY_BEGIN) {
+                    loading.setVisibility(View.GONE);
+                }
             }
 
             @Override
             public void onDebugLog(String log) {
-
+                Trace.e(log);
             }
 
             @Override
             public void onRoomDestroy(String roomID) {
-
+                loading.setText("房间关闭了");
+                loading.setVisibility(View.VISIBLE);
+                showToastCenter("房间关闭了");
             }
 
             @Override
@@ -736,12 +756,60 @@ public class CamDetailActivity extends BaseActivity {
 
             @Override
             public void onRecvRoomTextMsg(String roomID, String userID, String userName, String userAvatar, String message) {
-
+                Trace.e("custom receive : " + message);
+                CustomMsg msg = GsonUtils.gsonToBean(message, CustomMsg.class);
+                addRoomText(userName, msg.data.message, msg.user.level, /*msg.user.guard*/"");
             }
 
             @Override
             public void onRecvRoomCustomMsg(String roomID, String userID, String userName, String userAvatar, String cmd, String message) {
-
+//                if ("wsGift".equals(cmd)) {
+//                    GiftEntity giftEntity = GsonUtils.gsonToBean(message, GiftEntity.class);
+//                    if ("100".equals(giftEntity.no)) {
+//                        showGiftAnim(id);
+//                    }
+//                }
+                Trace.e("userAvatar : " + userAvatar);
+                CustomMsg msg = GsonUtils.gsonToBean(message, CustomMsg.class);
+                if ("gift".equals(msg.type)) {
+                    GiftBean myBean = getGiftById(msg.data.giftId);
+                    if (null != myBean) {
+                        myBean.setTheSendGiftSize(Integer.parseInt(msg.data.giftCount));
+                        myBean.setTheUserId(userID);
+                        myBean.setUserName(userName);
+                        myBean.userAvatar = userAvatar;
+                    }
+                    showGiftAnim(myBean, msg.data.giftUrl);
+                    goldValue += Integer.parseInt(msg.data.giftAmount);
+                    goldCount.setText(NumberUtil.format10_000(goldValue));
+                } else if ("chat".equals(msg.type)) {
+                    if ("join".equals(msg.subType)) {
+                        addUser(userID, userAvatar, msg.user.sex, userName, msg.user.level);
+                        addUserText(userName, msg.user.level, /*msg.user.guard*/"");
+                    } else if ("system".equals(msg.subType)) {
+                        addSystemText(msg.data.message);
+                    } else if ("normal".equals(msg.subType) || "guard".equals(msg.subType)) {
+                        addRoomText(userName, msg.data.message, msg.user.level, /*msg.user.guard*/"");
+                    } else if ("guard".equals(msg.subType)) {
+                        addRoomText(userName, msg.data.message, msg.user.level, /*msg.user.guard*/"");
+                    } else if ("exit".equals(msg.subType)) {
+                        removeAudience(userID);
+                        exitUserText(userName, msg.user.level, /*msg.user.guard*/"");
+                    }
+                } else if ("barrage".equals(msg.type)) {
+                    barrageView.addTextitem(msg.data.message, /*msg.user.guard*/"");
+                } else if ("redPacket".equals(msg.type)) {
+                    if ("send".equals(msg.subType)) {
+                        showRedPacket(msg, userAvatar, userName);
+                    } else if ("receive".equals(msg.subType)) {
+                    }
+                } else if ("manage".equals(msg.type)) {
+                    if ("shutup".equals(msg.subType)) {
+                        shutUpTo = System.currentTimeMillis() + msg.data.time;
+                    } else if ("kickout".equals(msg.subType) || "black".equals(msg.subType)) {
+                        onLeftClick(null);
+                    }
+                }
             }
         };
     }
@@ -952,7 +1020,7 @@ public class CamDetailActivity extends BaseActivity {
 
     @Override
     public void onLeftClick(View v) {
-        liveRoom.removeCurrentRoom();
+//        liveRoom.removeCurrentRoom();
         if (loading.getVisibility() != View.VISIBLE) {
             sendUserExit();
         }
@@ -1817,7 +1885,8 @@ public class CamDetailActivity extends BaseActivity {
         if (loading.getVisibility() == View.VISIBLE) {
             showToastCenter("暂未直播，功能不可用");
             //del by easy
-//            return;
+            //update by libin
+            return;
         }
         liveRoom.sendRoomCustomMsg(cmd, GsonUtils.gsonString(msg), callback);
     }

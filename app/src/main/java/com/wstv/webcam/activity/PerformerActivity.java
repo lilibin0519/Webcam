@@ -26,6 +26,7 @@ import com.wstv.webcam.http.model.room.Room;
 import com.wstv.webcam.http.model.room.RoomStateResult;
 import com.wstv.webcam.http.model.user.UserBean;
 import com.wstv.webcam.http.model.user.UserResult;
+import com.wstv.webcam.tencent.roomutil.commondef.AnchorInfo;
 import com.wstv.webcam.util.LiveRoomUtil;
 import com.wstv.webcam.util.NumberUtil;
 
@@ -211,11 +212,18 @@ public class PerformerActivity extends BaseActivity {
             public void onSuccess(Room room, int id) {
                 Bundle bundle = new Bundle();
                 bundle.putString(CamDetailActivity.BUNDLE_KEY_FLV_URL, room.mixedPlayURL);
-                bundle.putString(CamDetailActivity.BUNDLE_KEY_LINK_URL, room.pushersMap.get(room.roomCreator).accelerateURL);
+//                bundle.putString(CamDetailActivity.BUNDLE_KEY_LINK_URL, room.pushersMap.get(room.roomCreator).accelerateURL);
                 bundle.putString(CamDetailActivity.BUNDLE_KEY_ROOM_ID, room.roomID);
                 bundle.putString(CamDetailActivity.BUNDLE_KEY_PERFORMER_ID, room.roomCreator);
-                bundle.putSerializable(CamDetailActivity.BUNDLE_KEY_PERFORMER, room.pushersMap.get(room.roomCreator));
-                bundle.putSerializable(CamDetailActivity.BUNDLE_KEY_AUDIENCE, room.audiences);
+                AnchorInfo pusher = null;
+                for (AnchorInfo anchorInfo : room.pushers) {
+                    if (anchorInfo.userID == room.roomCreator) {
+                        pusher = anchorInfo;
+                        break;
+                    }
+                }
+                bundle.putParcelable(CamDetailActivity.BUNDLE_KEY_PERFORMER, pusher);
+//                bundle.putSerializable(CamDetailActivity.BUNDLE_KEY_AUDIENCE, room.audiences);
                 bundle.putInt(CamDetailActivity.BUNDLE_KEY_MANAGE, audienceStateResult.detail.manager);
                 bundle.putLong(CamDetailActivity.BUNDLE_KEY_SHUT_UP, audienceStateResult.detail.endTime);
                 LiveRoomUtil.getInstance((BaseActivity) context).getLiveRoom().addRoom(room);
