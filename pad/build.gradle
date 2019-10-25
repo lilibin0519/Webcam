@@ -13,7 +13,7 @@ android {
         applicationId "com.wstv.webcam"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 19101815
+        versionCode 19102501
         versionName "1.5"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

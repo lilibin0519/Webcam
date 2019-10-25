@@ -39,7 +39,6 @@ import com.wstv.webcam.http.HttpService;
 import com.wstv.webcam.http.callback.BaseCallback;
 import com.wstv.webcam.http.model.EmptyResult;
 import com.wstv.webcam.http.model.IsFollowResult;
-import com.wstv.webcam.http.model.Pusher;
 import com.wstv.webcam.http.model.audience.Audience;
 import com.wstv.webcam.http.model.audience.AudienceStateResult;
 import com.wstv.webcam.http.model.gift.GiftAnim;
@@ -49,7 +48,6 @@ import com.wstv.webcam.http.model.gift.GiftType;
 import com.wstv.webcam.http.model.guard.GuardGood;
 import com.wstv.webcam.http.model.guard.GuardResult;
 import com.wstv.webcam.http.model.order.CodeResult;
-import com.wstv.webcam.http.model.room.Room;
 import com.wstv.webcam.http.model.room.RoomType;
 import com.wstv.webcam.http.model.room.RoomTypeResult;
 import com.wstv.webcam.http.model.user.UserResult;
@@ -57,7 +55,6 @@ import com.wstv.webcam.tencent.liveroom.IMLVBLiveRoomListener;
 import com.wstv.webcam.tencent.liveroom.MLVBLiveRoom;
 import com.wstv.webcam.tencent.roomutil.commondef.AnchorInfo;
 import com.wstv.webcam.tencent.roomutil.commondef.AudienceInfo;
-import com.wstv.webcam.tencent.roomutil.commondef.PusherInfo;
 import com.wstv.webcam.tencent.roomutil.commondef.RoomInfo;
 import com.wstv.webcam.tencent.roomutil.misc.TextMsgInputDialog;
 import com.wstv.webcam.util.LiveRoomUtil;
@@ -71,7 +68,6 @@ import com.wstv.webcam.widget.NoScrollViewPager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -795,7 +791,14 @@ public class LivePageActivity extends BaseActivity {
 
             @Override
             public void onError(int errCode, String errMsg, Bundle extraInfo) {
+                if (errCode == TXLiveConstants.PLAY_ERR_NET_DISCONNECT || errCode == TXLiveConstants.PLAY_EVT_PLAY_END) {
+                    // 网络断连，且经多次重连亦不能恢复，更多重试请自行重启播放 || 直播正常结束
+//                    roomListenerCallback.onDebugLog("[AnswerRoom] 拉流失败：网络断开");
+//                    roomListenerCallback.onError(-1, "网络断开，拉流失败");
 
+                    mPresentation.loading.setText("主播已下播");
+                    mPresentation.loading.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

@@ -25,7 +25,6 @@ import com.opensource.svgaplayer.SVGADrawable;
 import com.opensource.svgaplayer.SVGAImageView;
 import com.opensource.svgaplayer.SVGAParser;
 import com.opensource.svgaplayer.SVGAVideoEntity;
-import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.wstv.webcam.R;
 import com.wstv.webcam.activity.LivePageActivity;
@@ -36,7 +35,6 @@ import com.wstv.webcam.holder.chat.ChatViewListener;
 import com.wstv.webcam.http.HttpService;
 import com.wstv.webcam.http.callback.BaseCallback;
 import com.wstv.webcam.http.model.PerformerCard;
-import com.wstv.webcam.http.model.Pusher;
 import com.wstv.webcam.http.model.account.AccountResult;
 import com.wstv.webcam.http.model.audience.Audience;
 import com.wstv.webcam.http.model.gift.GiftBean;
@@ -46,12 +44,10 @@ import com.wstv.webcam.http.model.ranking.RankingResult;
 import com.wstv.webcam.tencent.liveroom.IMLVBLiveRoomListener;
 import com.wstv.webcam.tencent.roomutil.commondef.AnchorInfo;
 import com.wstv.webcam.tencent.roomutil.commondef.AudienceInfo;
-import com.wstv.webcam.tencent.roomutil.commondef.PusherInfo;
 import com.wstv.webcam.tencent.roomutil.misc.TextChatMsg;
 import com.wstv.webcam.util.NumberUtil;
 import com.zhangyf.gift.RewardLayout;
 
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -625,23 +621,23 @@ public class DifferentDisplay extends Presentation {
         SVGAParser parser = new SVGAParser(activity);
         // del by easy 错误: 无法访问Function0
         //            parser.decodeFromURL(new URL(giftUrl), new SVGAParser.ParseCompletion() {
-//        try {
-//            parser.decodeFromURL(new URL(giftUrl), new SVGAParser.ParseCompletion() {
-//                @Override
-//                public void onComplete(SVGAVideoEntity svgaVideoEntity) {
-//                    SVGADrawable drawable = new SVGADrawable(svgaVideoEntity);
-//                    animView.setImageDrawable(drawable);
-//                    animView.startAnimation();
-//                }
-//
-//                @Override
-//                public void onError() {
-//
-//                }
-//            });
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            parser.decodeFromURL(new URL(giftUrl), new SVGAParser.ParseCompletion() {
+                @Override
+                public void onComplete(SVGAVideoEntity svgaVideoEntity) {
+                    SVGADrawable drawable = new SVGADrawable(svgaVideoEntity);
+                    animView.setImageDrawable(drawable);
+                    animView.startAnimation();
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showRedPacket(CustomMsg msg, String avatar, String name) {
